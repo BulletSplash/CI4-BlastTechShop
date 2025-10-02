@@ -5,7 +5,7 @@
 
 <div align="center">
   <a href="https://github.com/BulletSplash">
-    <img src="./assets/img/lawrence.jpg" alt="BulletSplash" width="130" height="130">
+    <img src="./assets/img/bulletSplash.jpg" alt="BulletSplash" width="130" height="130">
   </a>
 <!-- * Title Section -->
   <h3 align="center">AD - CI4 BlastTechShop</h3>
