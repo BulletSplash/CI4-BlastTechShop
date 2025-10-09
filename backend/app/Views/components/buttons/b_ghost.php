@@ -1,0 +1,1 @@
+<a href="<?= esc($link ?? "") ?>" class="btn-ghost"><?= esc($text ?? "default") ?></a>

@@ -1,0 +1,1 @@
+<a href="<?= esc($link ?? "") ?>" class="btn-primary" ><?= esc($text ?? null ? $text : "") ?></a>
