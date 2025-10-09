@@ -13,7 +13,7 @@
 
 <!-- * Description Section -->
 <div align="center">
-This is a website about selling hardware computer parts.
+This website is about selling hardware computer parts with ease and convenience.
 </div>
 
 <br/>
