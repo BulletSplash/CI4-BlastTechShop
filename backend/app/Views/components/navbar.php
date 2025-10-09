@@ -9,8 +9,8 @@
                 <nav class="hidden md:flex items-center gap-4 text-sm text-slate-300">
                     <a href="#products" class="hover:text-white">Products</a>
                     <a href="#deals" class="hover:text-white">Deals</a>
-                    <a href="#mood-board" class="hover:text-white">MoodBoard</a>
-                    <a href="#roadmap" class="hover:text-white">Roadmap</a>
+                    <a href="moodboard" class="hover:text-white">MoodBoard</a>
+                    <a href="roadmap" class="hover:text-white">Roadmap</a>
                 </nav>
             </div>
 
