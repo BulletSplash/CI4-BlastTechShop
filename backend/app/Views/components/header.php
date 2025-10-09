@@ -5,13 +5,18 @@
 // $sub: string|null
 // $primary: object
 // $secondary: object
+
+$title = 'BLAST TECH SHOP';
 ?>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><?= esc($title ?? null ? $title . ": " : "") ?>Sunset Funeral Homes</title>
+    <title><?= esc($title ?? null ? $title : "") ?></title> 
 
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="<?= esc(base_url('public/js/index.js')) ?>"></script>
+    
     <!-- Default CDN includes -->
     <!-- Google Fonts: Playfair Display + Lato (global) -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -205,5 +210,41 @@
         h5 {
             font-family: 'Playfair Display', Georgia, serif;
         }
+
+
+        /* --- BlastTech Shop brand tokens & components --- */
+        :root {
+            --brand-bg: #08090b;
+            --brand-surface: #0f1720;
+            --brand-accent: #004080;
+            --brand-accent-2: #400080;
+            --brand-muted: #94a3b8;
+            --brand-white: #f8fafc;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--brand-accent), var(--brand-accent-2));
+            color: var(--brand-white);
+            border-radius: .5rem;
+            padding: .6rem 1rem;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(0, 170, 255, 0.12);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 170, 255, 0.18); }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--brand-white);
+            padding: .5rem .9rem;
+            border-radius: .5rem;
+        }
+
+        .btn-ghost:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 170, 255, 0.18); }
+        
+        .brand-logo { font-family: 'Playfair Display', serif; letter-spacing: .5px; }
+        .product-img { height: 160px; object-fit: contain; }
     </style>
 </head>
