@@ -58,7 +58,7 @@
 
                 <div class="mt-4 text-sm text-center">
                     <span class="text-slate-400">Don't have an account?</span>
-                    <a href="/register" class="text-[var(--brand-accent)] font-medium hover:underline ml-2">Create one</a>
+                    <a href="/signup" class="text-[var(--brand-accent)] font-medium hover:underline ml-2">Create one</a>
                 </div>
             </form>
         </div>
