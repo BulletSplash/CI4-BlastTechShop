@@ -21,7 +21,7 @@
                 </div>
 
                 <?= view('components/buttons/b_primary', ['link' => '/signin', 'text' => "Sign In"]) ?>
-                <?= view('components/buttons/b_ghost', ['link' => '/signin', 'text' => "Sign Up"]) ?>
+                <?= view('components/buttons/b_ghost', ['link' => '/signup', 'text' => "Sign Up"]) ?>
             </div>
         </div>
     </div>
