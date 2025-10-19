@@ -1,7 +1,7 @@
-<?= view('components/header') ?>
+<?= view('components/head') ?>
 
 <body class="antialiased bg-slate-900 text-slate-100 w-full">
-	<?= view('components/navbar') ?>
+	<?= view('components/header') ?>
 
 	<main class="mt-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<header class="mb-6">
@@ -18,24 +18,23 @@
 				<?php
 					$defaultTimeline = [
 						['id'=>'t1','date'=>'Now','title'=>'MVP Launch','desc'=>'Core product listing, cart, and checkout features complete.','status'=>'in progress'],
-						['id'=>'t2','date'=>'Q4','title'=>'Wishlist & Bundles','desc'=>'Save items and create bundle discounts at checkout.','status'=>'planned'],
-						['id'=>'t3','date'=>'Q1','title'=>'Build Configurator','desc'=>'Interactive PC builder with compatibility checks and estimated pricing.','status'=>'backlog'],
+						['id'=>'t2','date'=>'Q1','title'=>'Wishlist & Bundles','desc'=>'Save items and create bundle discounts at checkout.','status'=>'planned'],
+						['id'=>'t3','date'=>'Q2','title'=>'Build Configurator','desc'=>'Interactive PC builder with compatibility checks and estimated pricing.','status'=>'backlog'],
 					];
 					$timeline = $timelineItems ?? $defaultTimeline;
 				?>
 
 				<?php foreach ($timeline as $item): ?>
-				<li class="ml-6" data-id="<?= esc($item['id']) ?>">
-					<span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full <?= $item['status'] === 'done' ? 'bg-green-500 text-black' : ($item['status'] === 'in progress' ? 'bg-[var(--brand-accent)] text-black' : 'bg-slate-600 text-white') ?> font-bold text-xs"><?= esc($item['date']) ?></span>
-					<div class="flex items-start justify-between gap-4">
-						<div>
-							<h3 class="text-lg font-semibold"><?= esc($item['title']) ?></h3>
-							<p class="text-slate-300"><?= esc($item['desc']) ?></p>
-							<time class="text-sm text-slate-400"><?= esc(ucfirst($item['status'])) ?></time>
+					<li class="ml-6" data-id="<?= esc($item['id']) ?>">
+						<span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full <?= $item['status'] === 'done' ? 'bg-slate-600 text-black' : ($item['status'] === 'in progress' ? 'bg-green-600 p-2 text-white' : 'bg-slate-600 text-white') ?> font-bold text-xs"><?= esc($item['date']) ?></span>
+						<div class="flex items-start justify-between gap-4">
+							<div>
+								<h3 class="text-lg font-semibold"><?= esc($item['title']) ?></h3>
+								<p class="text-slate-300"><?= esc($item['desc']) ?></p>
+								<time class="text-sm <?= $item['status'] === 'planned' ? 'text-amber-600' : ($item['status'] === 'in progress' ? 'text-blue-500' : 'text-white') ?>"><?= esc(ucfirst($item['status'])) ?></time>
+							</div>
 						</div>
-						<!-- read-only milestone -->
-					</div>
-				</li>
+					</li>
 				<?php endforeach; ?>
 			</ol>
 		</section>
