@@ -214,7 +214,7 @@ $title = 'BLAST TECH SHOP';
 
         /* --- BlastTech Shop brand tokens & components --- */
         
-        .brand-logo { font-family: 'Playfair Display', serif; letter-spacing: .5px;}
+        .brand-logo { font-family: 'Playfair Display', serif; letter-spacing: .5px; }
         .product-img { height: 160px; object-fit: contain; }
     </style>
 </head>
