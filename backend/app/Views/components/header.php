@@ -1,5 +1,5 @@
-<header class="sticky top-0 z-10">
-    <nav class="w-full z-40 bg-slate-900 border border-b-slate-400">
+<header class="sticky top-0 z-10 bg-slate-900 border-b border-slate-400">
+    <nav class="w-full">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-4">
                 <div class="flex items-center gap-6">

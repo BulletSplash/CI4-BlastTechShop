@@ -1,45 +1,55 @@
-<?= view('components/header') ?>
+<?= view('components/head') ?>
 
 <body class="antialiased bg-slate-900 text-slate-100">
-    <?= view('components/navbar') ?>
+    <?= view('components/header') ?>
 
-    <main class="mt-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <header class="mb-8">
-            <h1 class="text-3xl font-extrabold">Mood Board — BLAST TECH SHOP</h1>
-            <p class="mt-2 text-slate-400">Design tokens, color palette, typographic scale and UI samples used on the landing page.</p>
-        </header>
+    <main class="mx-auto mt-8 max-w-6xl sm:px-6 lg:px-8">
+        <section class="mb-8 ">
+            <h1 class="text-3xl font-extrabold">Mood Board</h1>
+            <p class="mt-2 text-slate-400">Design tokens, color palette, typographic scale and UI samples used on the BLAST TECH SHOP.</p>
+        </section>
 
         <!-- Palette -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="card p-4">
-                <h3 class="font-semibold mb-3">Primary Palette</h3>
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="p-3 bg-[var(--brand-accent)] rounded text-center">#004080<br><span class="text-sm">Accent</span></div>
-                    <div class="p-3 bg-[var(--brand-accent-2)] rounded text-center">#400080<br><span class="text-sm">Accent 2</span></div>
-                    <div class="p-3 bg-[var(--brand-bg)] rounded text-center">#08090b<br><span class="text-sm">Background</span></div>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 font-bold">
+            <div class="card">
+                <h3 class="font-semibold mb-3">Base on <?= view("components/buttons/b_underlined", ['link' => 'https://tailwindcss.com/docs/colors', 'text' => 'TailwindCSS']) ?> color palette</h3>
+                <div class="grid grid-rows-3 gap-3">
+                    <div class="p-3 bg-blue-900 rounded text-center border border-white"> Blue - 900 <br></div>
+                    <div class="p-3 bg-violet-950 rounded text-center border border-white"> Violet - 950 <br></div>
+                    <div class="p-3 bg-slate-900 rounded text-center border border-white"> Slate - 900 <br></div>
                 </div>
             </div>
 
-            <div class="card p-4">
-                <h3 class="font-semibold mb-3">Neutrals</h3>
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="p-3 bg-slate-800 rounded text-center">#0f1720<br><span class="text-sm">Surface</span></div>
-                    <div class="p-3 bg-slate-700 rounded text-center">#334155<br><span class="text-sm">Muted</span></div>
-                    <div class="p-3 bg-white/6 rounded text-center">#E6EEF5<br><span class="text-sm">Divider</span></div>
+            <div class="card">
+                <div class="py-[18px]"></div>
+                <div class="grid grid-rows-3 gap-3">
+                    <div class="p-3 bg-slate-400 rounded text-center border border-white"> Slate - 400 <br></div>
+                    <div class="p-3 bg-amber-600 rounded text-center border border-white"> Amber - 600 <br></div>
+                    <div class="p-3 bg-white rounded text-center border border-white text-slate-800"> White <br></div>
                 </div>
             </div>
+        </section>
 
-            <div class="card p-4">
-                <h3 class="font-semibold mb-3">Accent usage</h3>
+        <section class="mb-8">
+            <h3 class="font-semibold mb-3">Buttons & Inputs</h3>
+            <div class="card">
                 <div class="flex gap-3">
-                    <button class="btn-primary">Primary</button>
-                    <button class="btn-ghost">Ghost</button>
+                    <?= view("components/buttons/b_primary", ['link' => null, 'text' => 'Primary']) ?>
+                    <?= view("components/buttons/b_ghost", ['link' => '', 'text' => 'Ghost']) ?>
+                    <div class="flex gap-3 py-2.5">
+                        <?= view("components/buttons/b_underlined", ['link', 'text' => 'Underlined']) ?>
+                        <?= view("components/buttons/b_glow", ['link' => '', 'text' => 'Glow']) ?>
+                    </div>
+                    <div class="hidden sm:flex items-center bg-white/5 rounded-md px-3 py-1 ml-10">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 mr-2"></i>
+                        <input type="search" placeholder="Search parts, GPUs, SSDs..." class="bg-transparent outline-none placeholder:text-slate-500 text-sm text-white " />
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Typography -->
-        <section class="card p-6 mb-8">
+        <section class="card mb-8">
             <h3 class="font-semibold mb-4">Typography</h3>
             <div class="space-y-3">
                 <div>
@@ -57,42 +67,55 @@
         </section>
 
         <!-- UI samples -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="card p-4">
-                <h3 class="font-semibold mb-3">Product Card</h3>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="card">
+                <h3 class="font-semibold mb-3">Cards Sample</h3>
                 <?= view('components/cards/product_card', [
-                    'img' => '/assets/img/bulletSplash.jpg',
-                    'title' => 'GPU — Prototype',
-                    'subtitle' => 'Brand Prototype • Dev',
-                    'price' => '$499.00',
+                    'img' => null,
+                    'title' => "GPU — High Perf",
+                    'subtitle' => 'Brand X • Model Z',
+                    'price' => '$' . number_format(10000, 2),
                     'availability' => 'in stock'
                 ]) ?>
             </div>
-
-            <div class="card p-4">
-                <h3 class="font-semibold mb-3">Buttons & Inputs</h3>
-                <div class="space-y-3">
-                    <div class="flex gap-3">
-                        <button class="btn-primary">Primary</button>
-                        <button class="btn-ghost">Ghost</button>
-                        <button class="btn-ghost" disabled>Disabled</button>
-                    </div>
-                    <div class="mt-3">
-                        <label class="block text-sm text-slate-300">Search</label>
-                        <input type="search" class="mt-1 w-full px-3 py-2 rounded bg-white/5" placeholder="Search parts...">
-                    </div>
-                </div>
+            <div class="card">
+                <div class="py-[18px]"></div>
+                <?= view('components/cards/product_card_2', [
+                    'img' => null,
+                    'title' => "GPU — High Perf",
+                    'subtitle' => 'Brand X • Model Z',
+                    'price' => '$' . number_format(10000, 2),
+                    'availability' => 'in stock'
+                ]) ?>
+            </div>
+            <div class="card text-xs">
+                <div class="py-[18px]"></div>
+                <?= view('components/cards/product_card_os', [
+                    'img' => null,
+                    'title' => "GPU — High Perf",
+                    'subtitle' => 'Brand X • Model Z',
+                    'price' => '$' . number_format(10000, 2),
+                    'availability' => 'out of stock'
+                ]) ?>
             </div>
         </section>
 
         <!-- Imagery -->
         <section class="card p-4 mb-8">
-            <h3 class="font-semibold mb-3">Imagery & Texture</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <img src="/assets/img/bulletSplash.jpg" alt="img1" class="rounded-md object-cover w-full h-28">
-                <img src="/assets/img/bulletSplash.jpg" alt="img2" class="rounded-md object-cover w-full h-28">
-                <img src="/assets/img/bulletSplash.jpg" alt="img3" class="rounded-md object-cover w-full h-28">
-                <img src="/assets/img/bulletSplash.jpg" alt="img4" class="rounded-md object-cover w-full h-28">
+            <h3 class="font-semibold mb-3">Logos</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
+                <div class="border border-white/4 bg-gradient-to-t from-white/2 to-white/1 text-center pb-5">
+                    <div class="flex items-center justify-center rounded-full bg-violet-950 mt-10 ml-15 mr-15 mb-2">
+                        <img src="images/logo.png" class="md:p-5 lg:p-10" />
+                    </div>
+                    <h3 class="font-semibold text-white">Main - Circle</h3>
+                </div>
+                <div class="border border-white/4 bg-gradient-to-t from-white/2 to-white/1 text-center pb-5">
+                    <div class="flex items-center justify-center rounded-xl bg-violet-950 mt-10 ml-15 mr-15 mb-2">
+                        <img src="images/logo.png" class=" p-2 sm:p-5 md:p-10" />
+                    </div>
+                    <h3 class="font-semibold text-white">Main - Square</h3>
+                </div>
             </div>
         </section>
     </main>
