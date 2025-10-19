@@ -1,250 +1,28 @@
-<?php
-// Component: components/head.php
-// Data contract:
-// $heading: string
-// $sub: string|null
-// $primary: object
-// $secondary: object
+<header class="sticky top-0 z-10">
+    <nav class="w-full z-40 bg-slate-900 border border-b-slate-400">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center gap-6">
+                    <a href="/" class="flex items-center gap-3">
+                        <img src="/images/logo.png" alt="Blast Tech Logo" class="h-10 w-10 rounded-md object-cover"/>
+                        <span class="brand-logo text-2xl text-white">BLAST TECH <span class="text-slate-400">SHOP</span></span>
+                    </a>
+                    <nav class="hidden md:flex items-center gap-4 text-sm text-slate-300">
+                        <?= view('components/buttons/b_underlined', ['link', 'text' => 'PRODUCTS']) ?>
+                        <?= view('components/buttons/b_underlined', ['link', 'text' => 'DEALS']) ?>
+                    </nav>
+                </div>
 
-$title = 'BLAST TECH SHOP';
-?>
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center bg-white/5 rounded-md px-3 py-1">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 mr-2"></i>
+                        <input type="search" placeholder="Search parts, GPUs, SSDs..." class="bg-transparent outline-none placeholder:text-slate-500 text-sm text-white " />
+                    </div>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><?= esc($title ?? null ? $title : "") ?></title> 
-
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="<?= esc(base_url('public/js/index.js')) ?>"></script>
-    
-    <!-- Default CDN includes -->
-    <!-- Google Fonts: Playfair Display + Lato (global) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Font Awsome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Global base typography -->
-    <style>
-        :root {
-            --sage-dark: #6F8E78;
-            --sage: #8DAA91;
-            --sage-light: #CFE6D7;
-
-            --rose-dark: #A87D79;
-            --rose: #C7A6A0;
-            --rose-light: #EDD9D6;
-
-            --stone-dark: #d6d6d6ff;
-            --stone: #aaaaaaff;
-            --stone-light: #c2c2c2ff;
-        }
-
-        .swatch {
-            width: 100%;
-            height: 3rem;
-            border-radius: .375rem;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        /* Button color utilities using design tokens */
-        .btn-sage {
-            background: var(--sage-dark);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-sage:hover {
-            background: var(--sage);
-        }
-
-        .btn-sage-dark {
-            background: var(--sage);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-sage-dark:hover {
-            background: var(--sage-dark);
-        }
-
-        .btn-rose {
-            background: var(--rose-dark);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-rose:hover {
-            background: var(--rose);
-        }
-
-        .btn-rose-dark {
-            background: var(--rose);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-rose-dark:hover {
-            background: var(--rose-dark);
-        }
-
-        .btn-border {
-            border-color: var(--rose);
-            border-width: 2px;
-            color: var(--rose);
-            font-weight: 600;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-border:hover {
-            color: white;
-            background: var(--rose);
-        }
-
-        .btn-border-dark {
-            border-color: var(--rose-dark);
-            border-width: 2px;
-            color: var(--rose-dark);
-            font-weight: 600;
-            transition: all;
-            transition-duration: 300ms;
-        }
-
-        .btn-border-dark:hover {
-            color: white;
-            background: var(--rose-dark);
-        }
-
-        .btn-disabled {
-            background-color: var(--stone);
-            color: white;
-            cursor: not-allowed;
-        }
-
-        /* Header CTA uses the main accent (sage-dark) */
-        .header-cta {
-            background: var(--sage-dark);
-            color: white;
-        }
-
-        .header-cta:hover {
-            background: var(--sage);
-        }
-
-        /* Small token-driven utilities */
-        .text-sage-dark {
-            color: var(--sage-dark);
-        }
-
-        .text-sage {
-            color: var(--sage);
-        }
-
-        .bg-sage-light {
-            background: var(--sage-light);
-        }
-
-        .bg-sage {
-            background: var(--sage);
-        }
-
-        .bg-sage-dark {
-            background: var(--sage-dark);
-        }
-
-        .bg-stone-light {
-            background: var(--stone-light);
-        }
-
-        /* Custom scrollbar styling using sage-light token (#CFE6D7) */
-        /* WebKit-based browsers */
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--sage-light);
-            border-radius: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--sage) 0%, var(--sage-dark) 100%);
-            border-radius: 8px;
-            border: 3px solid rgba(0, 0, 0, 0.03);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--sage-dark) 0%, var(--sage) 100%);
-        }
-
-        /* Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: var(--sage-dark) var(--sage-light);
-        }
-
-        /* Utility class to apply custom scrollbars to specific containers */
-        .custom-scroll {
-            overflow: auto;
-        }
-
-        /* Base typography */
-        html,
-        body {
-            font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-            font-family: 'Playfair Display', Georgia, serif;
-        }
-
-
-        /* --- BlastTech Shop brand tokens & components --- */
-        :root {
-            --brand-bg: #08090b;
-            --brand-surface: #0f1720;
-            --brand-accent: #004080;
-            --brand-accent-2: #400080;
-            --brand-muted: #94a3b8;
-            --brand-white: #f8fafc;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, var(--brand-accent), var(--brand-accent-2));
-            color: var(--brand-white);
-            border-radius: .5rem;
-            padding: .6rem 1rem;
-            font-weight: 700;
-            box-shadow: 0 6px 18px rgba(0, 170, 255, 0.12);
-            transition: transform .12s ease, box-shadow .12s ease;
-        }
-
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 170, 255, 0.18); }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.06);
-            color: var(--brand-white);
-            padding: .5rem .9rem;
-            border-radius: .5rem;
-        }
-
-        .btn-ghost:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 170, 255, 0.18); }
-        
-        .brand-logo { font-family: 'Playfair Display', serif; letter-spacing: .5px; }
-        .product-img { height: 160px; object-fit: contain; }
-    </style>
-</head>
+                    <?= view('components/buttons/b_primary', ['link' => '/signin', 'text' => "Sign In"]) ?>
+                    <?= view('components/buttons/b_ghost', ['link' => '/signin', 'text' => "Sign Up"]) ?>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
