@@ -1,7 +1,8 @@
-<?= view('components/header') ?>
+<?= view('components/head') ?>
 
 <body class="antialiased bg-slate-900 text-slate-100">
-    <?= view('components/navbar') ?>
+    <?= view('components/header') ?>
+
     <main class="min-h-screen flex items-center justify-center">
         <div class="max-w-md w-full">
             <div class="text-center">
@@ -35,30 +36,22 @@
 
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <input id="remember" name="remember" type="checkbox" class="h-4 w-4 text-[var(--brand-accent)] focus:ring-[var(--brand-accent)] border-slate-600 rounded" />
-                        <label for="remember" class="ml-2 block text-sm text-slate-300">Remember me</label>
+                        <input id="remember" name="remember" type="checkbox" class="h-4 w-4 border-slate-600 rounded" />
+                        <label for="remember" class="ml-2 block text-sm text-slate-400">Remember me</label>
                     </div>
 
                     <div class="text-sm">
-                        <a href="/forgot" class="font-medium text-[var(--brand-accent)] hover:underline">Forgot your password?</a>
+                        <?= view('components/buttons/b_underlined', ['text' => 'Forgot your password']) ?>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3">
-                    <button type="submit" class="btn-primary w-full">Sign in</button>
-                </div>
-
-                <div class="pt-4 text-center">
-                    <p class="text-sm text-slate-400">Or continue with</p>
-                    <div class="mt-3 flex justify-center gap-3">
-                        <a href="/oauth/google" class="btn-ghost inline-flex items-center gap-2"><i class="fa-brands fa-google"></i> Google</a>
-                        <a href="/oauth/github" class="btn-ghost inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <?= view('components/buttons/b_primary', ['text' => 'Sign in']) ?>
                 </div>
 
                 <div class="mt-4 text-sm text-center">
                     <span class="text-slate-400">Don't have an account?</span>
-                    <a href="/signup" class="text-[var(--brand-accent)] font-medium hover:underline ml-2">Create one</a>
+                    <?= view('components/buttons/b_underlined', ['link' => 'signup', 'text' => 'Create one']) ?>
                 </div>
             </form>
         </div>
