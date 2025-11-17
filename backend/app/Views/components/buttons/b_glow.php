@@ -1,1 +1,0 @@
-<a href="<?= esc($link ?? "") ?>" class="text-slate-300 hover:text-white text-shadow-[0_0_25px_rgb(0_0_0_/_0.25)] hover:text-shadow-white hover:-translate-y-0.5"><?= esc($text ?? "default") ?></a> 

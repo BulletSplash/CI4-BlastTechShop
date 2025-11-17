@@ -5,18 +5,13 @@
 // $sub: string|null
 // $primary: object
 // $secondary: object
-
-$title = 'BLAST TECH SHOP';
 ?>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><?= esc($title ?? null ? $title : "") ?></title> 
+    <title><?= esc($title ?? null ? $title . ": " : "") ?>Sunset Funeral Homes</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="<?= esc(base_url('public/js/index.js')) ?>"></script>
-    
     <!-- Default CDN includes -->
     <!-- Google Fonts: Playfair Display + Lato (global) -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -210,11 +205,5 @@ $title = 'BLAST TECH SHOP';
         h5 {
             font-family: 'Playfair Display', Georgia, serif;
         }
-
-
-        /* --- BlastTech Shop brand tokens & components --- */
-        
-        .brand-logo { font-family: 'Playfair Display', serif; letter-spacing: .5px; }
-        .product-img { height: 160px; object-fit: contain; }
     </style>
 </head>
