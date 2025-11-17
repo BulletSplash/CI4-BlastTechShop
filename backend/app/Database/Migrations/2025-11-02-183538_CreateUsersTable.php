@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,   // optional
                 'auto_increment' => true,   // optional if you want auto counting, but important for the id
                 'null'           => false,  // not needed for id, but needed for most
-                'default'        => 1,      // optional
             ],
 
             'fullname' => [
@@ -53,9 +52,6 @@ class CreateUsersTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey('id');
-        $this->forge->addUniqueKey('email');
-        $this->forge->addUniqueKey('password');
         $this->forge->createTable('accounts', true);
     }
 
