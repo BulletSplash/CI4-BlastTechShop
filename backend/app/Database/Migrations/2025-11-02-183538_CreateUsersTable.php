@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Database\Migrations;
-
 use CodeIgniter\Database\Migration;
 
 class CreateUsersTable extends Migration
@@ -33,6 +32,13 @@ class CreateUsersTable extends Migration
                 'type'           => 'VARCHAR',  // important
                 'constraint'     => '100',
                 'null'           => false,  // not needed for id, but needed for most
+            ],
+
+            'type' => [
+                'type'           => 'VARCHAR',  // important
+                'constraint'     => '50',
+                'null'           => false,  // not needed for id, but needed for most
+                'default'        => 'client',
             ],
 
             'created_at' => [
