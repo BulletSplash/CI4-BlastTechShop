@@ -1,18 +1,7 @@
-<?php 
-    $session = session();
-
-    $flashMessage = $session->getFlashdata('success');
-    $successMessage;
-
-    if (!empty($flashMessage)){
-        $successMessage = $flashMessage['message'];
-    }
-?>
-
-<?= view('components/head') ?>
+<?= view('components/header') ?>
 
 <body class="antialiased bg-slate-900 text-slate-100">
-    <?= view('components/header') ?>
+    <?= view('components/navbar') ?>
 
     <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
@@ -22,19 +11,30 @@
                 <p class="mt-2 text-sm text-slate-400">Sign up to save builds, track orders, and checkout faster.</p>
             </div>
 
-            <form class="mt-8 space-y-6 bg-slate-800/40 p-6 rounded-lg card" action="register" method="post">
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="rounded-md bg-red-600/90 p-3 text-white text-sm">
+                    <?= esc(session()->getFlashdata('error')) ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('errors')): ?>
+                <div class="rounded-md bg-red-600/80 p-3 text-white text-sm">
+                    <?php $errs = session()->getFlashdata('errors');
+                        if (is_array($errs)):
+                            foreach ($errs as $e): ?>
+                                <div><?= esc($e) ?></div>
+                    <?php endforeach; else: ?>
+                        <?= esc($errs) ?>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="mt-8 space-y-6 bg-slate-800/40 p-6 rounded-lg card" action="/register" method="post">
                 <?= csrf_field() ?>
                 <div class="rounded-md shadow-sm -space-y-px">
-
-                    <?php if (!empty($successMessage)): ?>
-                        <div class="rounded-md p-3 text-center text-green-600/90 text-sm">
-                            <?= esc($successMessage) ?>
-                        </div>
-                    <?php endif; ?>
-
                     <div>
                         <label for="name" class="sr-only">Full name</label>
-                        <input id="fullname" name="fullname" type="text" autocomplete="name" required
+                        <input id="name" name="name" type="text" autocomplete="name" required
                             class="appearance-none rounded-md relative block w-full px-3 py-2 border border-transparent placeholder:text-slate-500 text-slate-100 bg-white/3 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:border-transparent"
                             placeholder="Full name" value="<?= esc(old('name')) ?>">
                     </div>
@@ -61,14 +61,25 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end">
+                <div class="flex items-center justify-between">
                     <div class="text-sm">
-                        <?= view('components/buttons/b_underlined', ['link' => 'signin', 'text' =>'Already have an account?']) ?>
+                        <a href="/terms" class="font-medium text-slate-300 hover:underline">Terms & Privacy</a>
+                    </div>
+                    <div class="text-sm">
+                        <a href="/login" class="font-medium text-[var(--brand-accent)] hover:underline">Already have an account?</a>
                     </div>
                 </div>
 
-                <div class="flex justify-center">
-                    <input type="submit" value="Sign Up" class="text-white font-bold bg-gradient-to-r from-blue-900 to-violet-950 px-4 py-2.5 rounded-lg hover:-translate-y-0.5 shadow-xl shadow-transparent hover:shadow-blue-400/10 ">
+                <div class="flex items-center gap-3">
+                    <button type="submit" class="btn-primary w-full">Create account</button>
+                </div>
+
+                <div class="pt-4 text-center">
+                    <p class="text-sm text-slate-400">Or sign up with</p>
+                    <div class="mt-3 flex justify-center gap-3">
+                        <a href="/oauth/google" class="btn-ghost inline-flex items-center gap-2"><i class="fa-brands fa-google"></i> Google</a>
+                        <a href="/oauth/github" class="btn-ghost inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
                 </div>
             </form>
         </div>

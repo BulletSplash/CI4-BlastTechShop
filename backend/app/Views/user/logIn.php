@@ -1,17 +1,3 @@
-<?php 
-    $session = session();
-
-    $flashMessage = $session->getFlashdata('errors');
-    $errorMessage;
-
-    if (!empty($flashMessage['email'])){
-        $errorMessage = $flashMessage['email'];
-    }
-    elseif(!empty($flashMessage['password'])){
-        $errorMessage = $flashMessage['password'];
-    }
-?>
-
 <?= view('components/head') ?>
 
 <body class="antialiased bg-slate-900 text-slate-100">
@@ -25,15 +11,15 @@
                 <p class="mt-2 text-sm text-slate-400">Enter your credentials to access your orders, carts, and saved builds.</p>
             </div>
 
-            <form class="mt-8 space-y-6 bg-slate-800/40 p-6 rounded-lg card" action="login" method="post">
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="rounded-md bg-red-600/90 p-3 text-white text-sm">
+                    <?= esc(session()->getFlashdata('error')) ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="mt-8 space-y-6 bg-slate-800/40 p-6 rounded-lg card" action="/login" method="post">
                 <?= csrf_field() ?>
                 <div class="rounded-md shadow-sm -space-y-px">
-                    <?php if (!empty($errorMessage)): ?>
-                        <div class="rounded-md p-3 text-center text-red-600/90 text-sm">
-                            <?= esc($errorMessage) ?>
-                        </div>
-                    <?php endif; ?>
-
                     <div>
                         <label for="email" class="sr-only">Email address</label>
                         <input id="email" name="email" type="email" autocomplete="email" required
@@ -60,7 +46,7 @@
                 </div>
 
                 <div class="flex items-center gap-3 justify-center">
-                    <input type="submit" value="Sign In" class="text-white font-bold bg-gradient-to-r from-blue-900 to-violet-950 px-4 py-2.5 rounded-lg hover:-translate-y-0.5 shadow-xl shadow-transparent hover:shadow-blue-400/10">
+                    <?= view('components/buttons/b_primary', ['text' => 'Sign in']) ?>
                 </div>
 
                 <div class="mt-4 text-sm text-center">
