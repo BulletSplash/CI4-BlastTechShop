@@ -2,24 +2,18 @@
     $session = session();
 
     $flashMessage = $session->getFlashdata('success');
-<<<<<<< HEAD
     $successMessage;
-=======
     $errflashMessage = $session->getFlashdata('error');
     $successMessage;
     $errorMessage;
->>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
 
     if (!empty($flashMessage)){
         $successMessage = $flashMessage['message'];
     }
-<<<<<<< HEAD
-=======
 
     if (!empty($errflashMessage)){
         $errorMessage = $errflashMessage['message'];
     }
->>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
 ?>
 
 <?= view('components/head') ?>
@@ -45,15 +39,12 @@
                         </div>
                     <?php endif; ?>
 
-<<<<<<< HEAD
-=======
                     <?php if (!empty($errorMessage)): ?>
                         <div class="rounded-md p-3 text-center text-red-600/90 text-sm">
                             <?= esc($errorMessage) ?>
                         </div>
                     <?php endif; ?>
 
->>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
                     <div>
                         <label for="name" class="sr-only">Full name</label>
                         <input id="fullname" name="fullname" type="text" autocomplete="name" required
