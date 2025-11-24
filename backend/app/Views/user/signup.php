@@ -2,10 +2,16 @@
     $session = session();
 
     $flashMessage = $session->getFlashdata('success');
+    $errflashMessage = $session->getFlashdata('error');
     $successMessage;
+    $errorMessage;
 
     if (!empty($flashMessage)){
         $successMessage = $flashMessage['message'];
+    }
+
+    if (!empty($errflashMessage)){
+        $errorMessage = $errflashMessage['message'];
     }
 ?>
 
@@ -29,6 +35,12 @@
                     <?php if (!empty($successMessage)): ?>
                         <div class="rounded-md p-3 text-center text-green-600/90 text-sm">
                             <?= esc($successMessage) ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($errorMessage)): ?>
+                        <div class="rounded-md p-3 text-center text-red-600/90 text-sm">
+                            <?= esc($errorMessage) ?>
                         </div>
                     <?php endif; ?>
 
