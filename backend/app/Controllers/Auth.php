@@ -92,8 +92,11 @@ class Auth extends BaseController
             return redirect()->back()->withInput();
         }
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
         $userModel = new UsersModel();
 
         // This should be based on data from database table
@@ -114,12 +117,21 @@ class Auth extends BaseController
             $inserted = $userModel->insert($data);
 
             if(!$inserted){
+<<<<<<< HEAD
                 return("Failed to create account");
+=======
+                $session->setFlashdata('error', ['message' => 'Unsuccessful account creation']);
+                return redirect()->back();
+>>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
             }
             
             return redirect()->back();
         }
 
+<<<<<<< HEAD
+=======
+        $session->setFlashdata('error', ['message' => 'Password and confirmation do not match']);
+>>>>>>> a97bb0532e84c23ed897c8d6254218520b4c292d
         return redirect()->back();
     }
 }
