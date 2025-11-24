@@ -8,9 +8,9 @@ class UsersModel extends Model
 {
     protected $table            = 'accounts';
     protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true; 
-    protected $returnType       = 'App\Entities\User';
-    protected $useSoftDeletes   = true;
+    protected $useAutoIncrement = true;
+    protected $returnType       = '\App\\Entities\\User';
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['fullname', 'email', 'password'];
 
@@ -21,7 +21,7 @@ class UsersModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
