@@ -91,9 +91,7 @@ class Auth extends BaseController
             $session->setFlashdata('old', $post);
             return redirect()->back()->withInput();
         }
-
         
-
         $userModel = new UsersModel();
 
         // This should be based on data from database table
@@ -115,11 +113,14 @@ class Auth extends BaseController
 
             if(!$inserted){
                 return("Failed to create account");
+                $session->setFlashdata('error', ['message' => 'Unsuccessful account creation']);
+                return redirect()->back();
             }
             
             return redirect()->back();
         }
 
+        $session->setFlashdata('error', ['message' => 'Password and confirmation do not match']);
         return redirect()->back();
     }
 }
